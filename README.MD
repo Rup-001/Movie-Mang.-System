@@ -1,3 +1,44 @@
+Movie Management System API
+
+Welcome to the Movie Management System API! This API enables users to manage movies, rate them, and report issues. Below is a detailed overview of the API endpoints, user accounts, and access guidelines.
+
+
+Pre-Created Users
+Three users have been created for testing purposes:
+
+Email: user1@example.com	username : user1
+Email: user2@example.com	username : user2 
+Email: admin@example.com	username : admin
+
+password : 12345
+
+Overview
+The root route (/) is accessible to all users without requiring authentication. For more information, please refer to the organized list of endpoints below.
+
+API Endpoints:
+        
+Home Routes
+
+GET Method: https://movie-mang-system.up.railway.app/
+
+Auth Routes
+
+POST Method: https://movie-mang-system.up.railway.app/login
+POST Method: https://movie-mang-system.up.railway.app/registration
+Movie Routes
+
+GET Method: https://movie-mang-system.up.railway.app/movie
+POST Method: https://movie-mang-system.up.railway.app/movie/create-movie
+GET Method: https://movie-mang-system.up.railway.app/movie/details/:movieId
+PUT Method: https://movie-mang-system.up.railway.app/movie/update/:movieId
+POST Method: https://movie-mang-system.up.railway.app/movie/rate/:movieId
+Report Routes
+
+POST Method: https://movie-mang-system.up.railway.app/report/:movieId
+GET Method: https://movie-mang-system.up.railway.app/report
+POST Method: https://movie-mang-system.up.railway.app/report/:movieId/action
+
+
 {
   "baseURL": "https://movie-mang-system.up.railway.app",
   "routes": {

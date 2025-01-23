@@ -159,7 +159,19 @@ exports.home = async (req, res) => {
     <body>
       <div class="container">
         <h1>Welcome to the Movie Management System API</h1>
-        <p>This route is accessible to all users without requiring authentication. For a detailed understanding, please refer to the organized list of endpoints below.</p>
+        <p>This route is accessible to all users without requiring authentication. For a detailed understanding, please refer to the organized list of endpoints below. <br/>
+
+        Pre-Created Users <br/>
+        Three users have been created for testing purposes: <br/>
+
+        Email: user1@example.com	username : user1 <br/>
+        Email: user2@example.com	username : user2  <br/>
+        Email: admin@example.com	username : admin <br/>
+
+        password : 12345 <br/>
+        
+        
+        </p>
 
         <h2>Home Routes</h2>
         <ul>
