@@ -113,7 +113,7 @@ exports.registrationUser = async (req, res) => {
 
 
 exports.home = async (req, res) => {
-  res.status(200).send(
+  res.status(200).json(
 
     `
     Welcome to the Home Route. This route is accessible to all users without requiring authentication. For a detailed understanding, please refer to the documentation or review the descriptions provided below.
