@@ -144,28 +144,3 @@ exports.getMovieDetails = async (req, res) => {
     }
   };
   
-  
-  exports.reportMovie = async (req, res) => {
-    const { movieId } = req.params;
-    const { reason } = req.body;
-  
-    try {
-      const movie = await Movie.findById(movieId);
-      if (!movie) return res.status(404).json({ message: 'Movie not found' });
-  
-      // Check if the user has already reported this movie
-      const alreadyReported = movie.reports.some(r => r.user.toString() === req.user.id);
-      if (alreadyReported) {
-        return res.status(400).json({ message: 'You have already reported this movie' });
-      }
-  
-      // Add the report
-      movie.reports.push({ user: req.user.id, reason });
-      movie.reported = true;
-      await movie.save();
-  
-      res.status(200).json({ message: 'Movie reported successfully', movie });
-    } catch (err) {
-      res.status(500).json({ message: 'Error reporting movie', error: err.message });
-    }
-  };
