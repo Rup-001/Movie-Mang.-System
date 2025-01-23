@@ -109,221 +109,261 @@ exports.registrationUser = async (req, res) => {
 }
 
 
-
-
-
 exports.home = async (req, res) => {
-  res.status(200).json(
-
-    `
-    Welcome to the Home Route. This route is accessible to all users without requiring authentication. For a detailed understanding, please refer to the documentation or review the descriptions provided below.
-
-    Below is the organized list of all URLs, along with their HTTP methods and endpoints:
-
-    Home Routes:
-
-    GET Method: https://movie-mang-system.up.railway.app/
-
-    Auth Routes:
-
-    POST Method: https://movie-mang-system.up.railway.app/login
-
-    POST Method: https://movie-mang-system.up.railway.app/registration
-
-    Movie Routes:
-
-    GET Method: https://movie-mang-system.up.railway.app/movie
-
-    POST Method: https://movie-mang-system.up.railway.app/movie/create-movie
-
-    GET Method: https://movie-mang-system.up.railway.app/movie/details/:movieId
-
-    PUT Method: https://movie-mang-system.up.railway.app/movie/update/:movieId
-
-    POST Method: https://movie-mang-system.up.railway.app/movie/rate/:movieId
-
-    Report Routes:
-
-    POST Method: https://movie-mang-system.up.railway.app/report/:movieId
-
-    GET Method: https://movie-mang-system.up.railway.app/report
-
-    POST Method: https://movie-mang-system.up.railway.app/report/:movieId/action
-
-
-Here is the description with detailed information:
-    
-    {
-  "baseURL": "https://movie-mang-system.up.railway.app",
-  "routes": {
-    "authRoutes": {
-      "basePath": "/",
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/",
-          "description": "This is the home route accessible to all users. No authentication is required to access this endpoint.",
-          "response": {
-            "message": ""
-          }
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "description": "This route allows users to log in to the system. Submit your credentials to access the system.",
-          "requestBody": {
-            "emailOrUsername": "string (required)",
-            "password": "string (required)"
-          },
-          "response": {
-            "success": true,
-            "message": "Logged in as user4",
-            "token": "Bearer {{token}}",
-            "username": "user4",
-            "role": "admin"
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Movie Management System API</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          background-color: #f9f9f9;
+          margin: 0;
+          padding: 0;
         }
-        },
-        {
-          "method": "POST",
-          "path": "/registration",
-          "description": "This route allows new users to register in the system. Provide your name, email, and password to create an account.",
-          "requestBody": {    
-              "username": "user1",
-              "email": "user1@google.com",
-              "password": "12345",
-              "role": "admin"           
-          },
-          "response": {
-            "message": "User registered successfully",
-            "user": {
-                "id": "679150cca6a531099eb520f9",
-                "username": "user1",
-                "email": "user1@google.com",
-                "role": "admin"
+        .container {
+          max-width: 900px;
+          margin: 20px auto;
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+          color: #333;
+        }
+        pre {
+          background: #f4f4f4;
+          padding: 10px;
+          border-radius: 5px;
+          overflow-x: auto;
+        }
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+        li {
+          margin-bottom: 10px;
+        }
+        code {
+          background: #eef;
+          padding: 2px 4px;
+          border-radius: 4px;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Welcome to the Movie Management System API</h1>
+        <p>This route is accessible to all users without requiring authentication. For a detailed understanding, please refer to the organized list of endpoints below.</p>
+
+        <h2>Home Routes</h2>
+        <ul>
+          <li><strong>GET Method:</strong> <code>https://movie-mang-system.up.railway.app/</code></li>
+        </ul>
+
+        <h2>Auth Routes</h2>
+        <ul>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/login</code></li>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/registration</code></li>
+        </ul>
+
+        <h2>Movie Routes</h2>
+        <ul>
+          <li><strong>GET Method:</strong> <code>https://movie-mang-system.up.railway.app/movie</code></li>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/movie/create-movie</code></li>
+          <li><strong>GET Method:</strong> <code>https://movie-mang-system.up.railway.app/movie/details/:movieId</code></li>
+          <li><strong>PUT Method:</strong> <code>https://movie-mang-system.up.railway.app/movie/update/:movieId</code></li>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/movie/rate/:movieId</code></li>
+        </ul>
+
+        <h2>Report Routes</h2>
+        <ul>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/report/:movieId</code></li>
+          <li><strong>GET Method:</strong> <code>https://movie-mang-system.up.railway.app/report</code></li>
+          <li><strong>POST Method:</strong> <code>https://movie-mang-system.up.railway.app/report/:movieId/action</code></li>
+        </ul>
+
+        <h2>Detailed Information</h2>
+        <pre>${JSON.stringify(
+
+
+          {
+            "baseURL": "https://movie-mang-system.up.railway.app",
+            "routes": {
+              "authRoutes": {
+                "basePath": "/",
+                "endpoints": [
+                  {
+                    "method": "GET",
+                    "path": "/",
+                    "description": "This is the home route accessible to all users. No authentication is required to access this endpoint.",
+                    "response": {
+                      "message": ""
+                    }
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/login",
+                    "description": "This route allows users to log in to the system. Submit your credentials to access the system.",
+                    "requestBody": {
+                      "emailOrUsername": "string (required)",
+                      "password": "string (required)"
+                    },
+                    "response": {
+                      "success": true,
+                      "message": "Logged in as user4",
+                      "token": "Bearer {{token}}",
+                      "username": "user4",
+                      "role": "admin"
+                  }
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/registration",
+                    "description": "This route allows new users to register in the system. Provide your name, email, and password to create an account.",
+                    "requestBody": {    
+                        "username": "user1",
+                        "email": "user1@google.com",
+                        "password": "12345",
+                        "role": "admin"           
+                    },
+                    "response": {
+                      "message": "User registered successfully",
+                      "user": {
+                          "id": "679150cca6a531099eb520f9",
+                          "username": "user1",
+                          "email": "user1@google.com",
+                          "role": "admin"
+                      }
+                    }
+                  }
+                ]
+              },
+              "movieRoutes": {
+                "basePath": "/movie",
+                "description": "Routes for managing movies in the system. Only for authenticate users",
+                "endpoints": [
+                  {
+                    "method": "GET",
+                    "path": "/",
+                    "description": "This route provides a list of all movies available in the system. You can explore movie titles and details here.",
+                    "response": {
+                      "movies": "Array of movie objects containing title, description, rating, and release date."
+                    }
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/create-movie",
+                    "description": "This route allows authorized users to add a new movie to the system. Provide the required details to create a movie entry.",
+                    "requestBody": {
+                      "title": "Inception",
+                      "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+                      "released_at": "2010-07-16",
+                      "duration": "2h 28m",
+                      "genre": "Sci-Fi",
+                      "language": "English"
+                    },
+                    "response": {
+                      "message": "Movie created successfully. The new movie is now available in the system.",
+                      "movie" : "movie Information"
+                    }
+                  },
+                  {
+                    "method": "GET",
+                    "path": "/details/:movieId",
+                    "description": "Use this route to get detailed information about a specific movie by providing its ID.",
+                    "response": "details about the movie"
+                  },
+                  {
+                    "method": "PUT",
+                    "path": "/update/:movieId",
+                    "description": "This route allows authorized users to update information about a specific movie by providing its ID.",
+                    "requestBody": {
+                      "title": "string (optional)",
+                      "description": "string (optional)",
+                      "released_at": "string (optional)",
+                      "genre": "number (optional)",
+                      "language": "number (optional)",
+                      "duration": "number (optional)"
+                    },
+                    "response": "success response about movie update"
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/rate/:movieId",
+                    "description": "This route allows users to rate a specific movie by providing its ID and their rating score.",
+                    "requestBody": {
+                      "rating": "number (required) between 1 to 5"
+                    },
+                    "response": {
+                      "message": "Movie reported successfully",
+                      "movie" : "details about movie"
+                    }
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/report/:movieId",
+                    "description": "This route allows users to report any issues or concerns about a specific movie by providing its ID.",
+                    "requestBody": {
+                      "reason": "string"
+                    },
+                    "response": {
+                      "message": "Movie reported successfully",
+                      "movie" : "movie Information"
+                    }
+                  }
+                ]
+              },
+              "reportRoutes": {
+                "basePath": "/report",
+                "description": "Routes for managing reports related to movies in the system.",
+                "endpoints": [
+                  {
+                    "method": "POST",
+                    "path": "/:movieId",
+                    "description": "This route allows users to report any issues or concerns about a specific movie by providing its ID.",
+                    "requestBody": {
+                      "reason": "string"
+                    },
+                    "response": {
+                      "message": "Movie reported successfully",
+                      "movie" : "movie Information"
+                    }
+                  },
+                  {
+                    "method": "GET",
+                    "path": "/",
+                    "description": "This route is for admins to view all reported movies and their respective details. This is only for admin",
+                    "response": {
+                      "reports": "Array of report objects with details about the reported movies."
+                    }
+                  },
+                  {
+                    "method": "POST",
+                    "path": "/:movieId/action",
+                    "description": "Admins can use this route to take action on a specific reported movie by providing its ID and the action to be taken.",
+                    "requestBody": {
+                      "action": "string (e.g., 'approve', 'reject')"
+                    },
+                    "response": {
+                      "message": "Message  based on the action"
+                    }
+                  }
+                ]
+              }
             }
           }
-        }
-      ]
-    },
-    "movieRoutes": {
-      "basePath": "/movie",
-      "description": "Routes for managing movies in the system. Only for authenticate users",
-      "endpoints": [
-        {
-          "method": "GET",
-          "path": "/",
-          "description": "This route provides a list of all movies available in the system. You can explore movie titles and details here.",
-          "response": {
-            "movies": "Array of movie objects containing title, description, rating, and release date."
-          }
-        },
-        {
-          "method": "POST",
-          "path": "/create-movie",
-          "description": "This route allows authorized users to add a new movie to the system. Provide the required details to create a movie entry.",
-          "requestBody": {
-            "title": "Inception",
-            "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
-            "released_at": "2010-07-16",
-            "duration": "2h 28m",
-            "genre": "Sci-Fi",
-            "language": "English"
-          },
-          "response": {
-            "message": "Movie created successfully. The new movie is now available in the system.",
-            "movie" : "movie Information"
-          }
-        },
-        {
-          "method": "GET",
-          "path": "/details/:movieId",
-          "description": "Use this route to get detailed information about a specific movie by providing its ID.",
-          "response": "details about the movie"
-        },
-        {
-          "method": "PUT",
-          "path": "/update/:movieId",
-          "description": "This route allows authorized users to update information about a specific movie by providing its ID.",
-          "requestBody": {
-            "title": "string (optional)",
-            "description": "string (optional)",
-            "released_at": "string (optional)",
-            "genre": "number (optional)",
-            "language": "number (optional)",
-            "duration": "number (optional)"
-          },
-          "response": "success response about movie update"
-        },
-        {
-          "method": "POST",
-          "path": "/rate/:movieId",
-          "description": "This route allows users to rate a specific movie by providing its ID and their rating score.",
-          "requestBody": {
-            "rating": "number (required) between 1 to 5"
-          },
-          "response": {
-            "message": "Movie reported successfully",
-            "movie" : "details about movie"
-          }
-        },
-        {
-          "method": "POST",
-          "path": "/report/:movieId",
-          "description": "This route allows users to report any issues or concerns about a specific movie by providing its ID.",
-          "requestBody": {
-            "reason": "string"
-          },
-          "response": {
-            "message": "Movie reported successfully",
-            "movie" : "movie Information"
-          }
-        }
-      ]
-    },
-    "reportRoutes": {
-      "basePath": "/report",
-      "description": "Routes for managing reports related to movies in the system.",
-      "endpoints": [
-        {
-          "method": "POST",
-          "path": "/:movieId",
-          "description": "This route allows users to report any issues or concerns about a specific movie by providing its ID.",
-          "requestBody": {
-            "reason": "string"
-          },
-          "response": {
-            "message": "Movie reported successfully",
-            "movie" : "movie Information"
-          }
-        },
-        {
-          "method": "GET",
-          "path": "/",
-          "description": "This route is for admins to view all reported movies and their respective details. This is only for admin",
-          "response": {
-            "reports": "Array of report objects with details about the reported movies."
-          }
-        },
-        {
-          "method": "POST",
-          "path": "/:movieId/action",
-          "description": "Admins can use this route to take action on a specific reported movie by providing its ID and the action to be taken.",
-          "requestBody": {
-            "action": "string (e.g., 'approve', 'reject')"
-          },
-          "response": {
-            "message": "Message  based on the action"
-          }
-        }
-      ]
-    }
-  }
-}
-
-    
-    
-    
-    `
-
-  )
-}
+          
+          
+          
+          , null, 2)}</pre>
+      </div>
+    </body>
+    </html>
+  `);
+};
